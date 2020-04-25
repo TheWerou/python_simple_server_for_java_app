@@ -1,16 +1,13 @@
+import json
 
 
 class Order:
-    def __init__(self, reciver, who_ordered, what_orderd, when_is_meeting, with_sugar):
-        self.__reciver = reciver
-        self.__who = who_ordered
-        self.what = what_orderd
-        self.with_sugar = with_sugar
-
-        if self.check_if_time_good(when_is_meeting):
-            self.when = [when_is_meeting[0], when_is_meeting[1]]  # hour , min
-        else:
-            raise Exception("when is meeting is not corect number")
+    def __init__(self, dict_to_give):  # reciver, who_ordered, what_orderd, when_is_meeting, with_sugar
+        self.reciver = dict_to_give["reciver"]
+        self.from_who = dict_to_give["from_who"]
+        self.what = dict_to_give["what"]
+        self.when = dict_to_give["when"]
+        self.with_sugar = dict_to_give["with_sugar"]
 
     def change_what_orderd(self, new_order):
         self.what = new_order

@@ -111,3 +111,6 @@ mysite/static/*.*
 
 # my own
 proj/
+Storage/
+Order_classes/
+Data_base/

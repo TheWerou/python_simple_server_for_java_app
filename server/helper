@@ -1,1 +1,14 @@
 
+
+def send_line(thing_to_send):
+    print(type(thing_to_send))
+    if isinstance(thing_to_send, list):
+        for i in thing_to_send:
+            print(i)
+    else:
+        print("------------------------------------------------------------")
+        print(thing_to_send)
+
+
+test = [["cos"],["nic"],["hej"]]
+send_line(test)
