@@ -36,46 +36,42 @@ class Comends:
         else:
             if len(list_of_line) == 2:
                 print("list entry " + str(list_of_line))
-                self.check_in_commands(list_of_line)
-
+                self.type = list_of_line[0]
                 return [self.type, list_of_line[1]]
 
             elif len(list_of_line) == 1:
                 print("list entry v2 " + str(list_of_line))
-                self.check_in_commands(list_of_line)
-
+                self.type = list_of_line[0]
                 return [self.type]
             else:
                 self.type = "WRG"
                 return self.type
 
-    def check_in_commands(self, line):      # method check if commend exist in dictionary and handles it
+    def handle_COMANDS(self, line):      # method check if commend exist in dictionary and handles it
         com_hand = self.object_com_handle()
-        if line[0] in self.in_comands:
-            self.line_list = line
 
-            if self.in_comands.get(line[0]) is 1:
-                self.type = "ASK"
-                return com_hand.ask_comand(line)
+        if self.in_comands.get(line[0]) is 1:
+            self.type = "ASK"
+            return com_hand.ask_comand(line)
 
-            elif self.in_comands.get(line[0]) is 2:
-                self.type = "CHK"
-                return com_hand.chk_command(line)
+        elif self.in_comands.get(line[0]) is 2:
+            self.type = "CHK"
+            return com_hand.chk_command(line)
 
-            elif self.in_comands.get(line[0]) is 3:
-                self.type = "NOO"
-                return com_hand.noo_comand(line)
+        elif self.in_comands.get(line[0]) is 3:
+            self.type = "NOO"
+            return com_hand.noo_comand(line)
 
-            elif self.in_comands.get(line[0]) is 4:
-                self.type = "AKC"
-                return com_hand.akc_command(line)
+        elif self.in_comands.get(line[0]) is 4:
+            self.type = "AKC"
+            return com_hand.akc_command(line)
 
-            elif self.in_comands.get(line[0]) is 5:
-                self.type = "RCV"
-                return com_hand.wrg_command(line)
-            else:
-                self.type = "WRG"
-                return com_hand.wrg_command(line)
+        elif self.in_comands.get(line[0]) is 5:
+            self.type = "RCV"
+            return com_hand.wrg_command(line)
+        else:
+            self.type = "WRG"
+            return com_hand.wrg_command(line)
 
     def object_com_handle(self):                # method creates object of ComHandle
         comhandl = ComHandle(self.orders, self.name)

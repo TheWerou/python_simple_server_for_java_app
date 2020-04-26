@@ -27,9 +27,9 @@ class Comunication(LineReceiver):
 
         else:                                   # If user have name line is passed to special method in class Comends
 
-            com = Comends(self.users, self.orders, self.state, self.name)
+            com = Comends(self.users, self.orders, self.name)
             print(type(self.name))
-            self.send_line_m(com.handle_COMANDS(com.rec_comand(line)))   # method below send reply to client
+            self.send_line_m((com.handle_COMANDS(com.rec_comand(line))))   # method below send reply to client
 
     def send_line_m(self, thing_to_send):                                # method send line or lines to client
         if isinstance(thing_to_send, list):                              # check if thing to send is list
@@ -51,7 +51,7 @@ class Comunication(LineReceiver):
 class ProgramFactory(Factory):                  # base factory class (handles multy connections at once )
     def __init__(self):
         self.users = {}
-        self.orders = []
+        self.orders = [["MACIEK", "ASK", "TOMEK"], ["MACIEK", "NOO", "BOGDAN"], ["TOMEK", "ASK", "IGA"]]
 
     def buildProtocol(self, addr):
         return Comunication(self.users, self.orders)
